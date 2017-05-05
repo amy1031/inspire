@@ -7,7 +7,6 @@ function ImageService() {
 		// ^^^^^^^ How do you use this?
 		return $.get(apiUrl, function (res) {
 			res = JSON.parse(res)
-			console.log('Image Data:', res)
 			callWhenDone(res)
 		})
 	}

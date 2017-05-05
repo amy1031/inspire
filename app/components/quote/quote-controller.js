@@ -11,11 +11,10 @@ function QuoteController(){
 		var elem = document.getElementById("quote");
 		var template = "";
 		template = `
-			<div class="col-xs-12">
-			<h2>${data.quote}</h2>
+			<div class="col-xs-8 col-xs-offset-2 col-md-8 col-md-offset-2 text-center">
+			<h3>${data.quote}</h3>
 			</div>
 			`
-
 		return elem.innerHTML = template;
 	}
 }

@@ -13,7 +13,7 @@ function WeatherController(){
 		var template = "";
 
 		template = `
-		<div class="col-xs-12">
+		<div class="col-xs-12 text-right">
 		<h2>${Math.round(data["main"]["temp"] * (9/5) - 459.67)}°</h2>
 		</div>
 		`
