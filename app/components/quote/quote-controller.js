@@ -1,8 +1,21 @@
-function QuoteService(){
+function QuoteController(){
 
-	var qs = new QuoteService()
+	var quoteService = new QuoteService()
 
-	qs.getQuote(function(quote){
-		console.log('What is the quote', quote)
+	quoteService.getQuote(function(quote){
+		//console.log('What is the quote', quote)
+		drawQuote(quote)
 	})
+
+	function drawQuote (data) {
+		var elem = document.getElementById("quote");
+		var template = "";
+		template = `
+			<div class="col-xs-12">
+			<h2>${data.quote}</h2>
+			</div>
+			`
+
+		return elem.innerHTML = template;
+	}
 }

@@ -7,14 +7,14 @@ function WeatherService() {
 	this.getWeather = function (callWhenDone) {
 		var w = localStorage.getItem('weather');
 		if (w) {
-			w = JSON.parse(w);
-			console.log('Weather Data:', w)
+			w = JSON.parse(w)
 			return callWhenDone(w)
 		}
 		
 		$.get(apiUrl, function (res) {
-			localStorage.setItem('weather', JSON.stringify(res))
-			callWhenDone(res);
+			var r = JSON.parse(res)
+			localStorage.setItem('weather', JSON.stringify(r))
+			callWhenDone(r);
 		})
 	}
 }
