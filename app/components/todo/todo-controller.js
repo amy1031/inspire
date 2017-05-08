@@ -1,11 +1,12 @@
-function TodoController(){
+function TodoController() {
 	// new up the TodoService that has already been configured for your use
 	// There are two methods getTodos returns and array
 	// saveTodos accepts an array and stores it to your local storage
 	var todoService = new TodoService()
+	var currentItem = "";
 
-	this.addTodoFromForm = function(e) {
-	//	debugger
+	this.addTodoFromForm = function (e) {
+		//	debugger
 		e.preventDefault();
 		// TAKE THE INFORMATION FORM THE FORM
 		var form = e.target;
@@ -18,40 +19,38 @@ function TodoController(){
 		// FINAL ACTION OF ADDING A TODO
 
 		drawTodos(todosArray)
+		form.todo.value = "";
 	}
 
 	function drawTodos(data) {
 		var elem = document.getElementById("todoList");
 		var template = "";
 		var itemTemplate = "";
-		//	debugger
-		for(var i = 0; i < data.length; i++) {
+		//debugger
+		for (var i = 0; i < data.length; i++) {
 			var item = data[i];
-				template += `
-					<div class="checkbox">
-    					<label>
-      						<input type="checkbox" id="check"> ${item}
-    					</label>
-  					</div>
+			template += `
+					${item} <button type="button" onclick="app.controllers.todoController.uncheck('${item}')">X</button><br>
 				`
 		}
 
-		if(data.length > 0) {
+		if (data.length > 0) {
 			var items = data.length;
 			itemTemplate = `
 			<h5>Items: ${items}</h5>`
 		}
 
-		// if(document.getElementById("check")) {
-		// $("#check").on("click", function() {
-  		// 	$(".checkbox input:checked").remove();
-			
-		// });
-		// }
-		// function uncheck() {
-    	// 	document.getElementById("check").checked = false;
-		// }
-
 		return elem.innerHTML = template + itemTemplate;
+	}
+
+	this.uncheck = function uncheck(item) {
+		//debugger
+		for (var i = 0; i < todosArray.length; i++) {
+			var todo = todosArray[i]
+			if(item == todo) {
+				todosArray.splice(todo, 1);
+			}
+		}
+		drawTodos(todosArray);
 	}
 }
