@@ -18,16 +18,28 @@
 			</div>
 		</div>
 		<div class="row">
-			<div id="todo">
-				<h6>To Do List</h6>
-				<form onsubmit="app.controllers.todoController.addTodoFromForm(event)">
-					<input type="text" name="todo" id="todo" placeholder="Add an Item" />
-				</form>
+			<div class="col-xs-2">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h5 class="panel-title">To Do List</h5>
+					</div>
+					<div class="panel-body">
+						<form onsubmit="app.controllers.todoController.addTodoFromForm(event)">
+							<input type="text" name="todo" id="todo" placeholder="Add an Item" />
+						</form>
+						<div id="todoList">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<div id="clock" class="clock"></div>
 			</div>
 		</div>
 		<div class="row navbar navbar-fixed-bottom">
 			<div id="quote">
-				The Quote
 			</div>
 		</div>
 	</div>
@@ -45,6 +57,7 @@
 	<script src="app/components/image/image-controller.js"></script>
 	<script src="app/components/quote/quote-controller.js"></script>
 	<script src="app/components/todo/todo-controller.js"></script>
+	<script src="app/components/clock/clock-controller.js"></script>
 
 	<!--Initialize App-->
 	<script src="app/init.js"></script>

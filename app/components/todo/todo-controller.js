@@ -5,17 +5,53 @@ function TodoController(){
 	var todoService = new TodoService()
 
 	this.addTodoFromForm = function(e) {
-		e.preventDefault()
+	//	debugger
+		e.preventDefault();
 		// TAKE THE INFORMATION FORM THE FORM
+		var form = e.target;
 
 		//ADD IT TO THE ARRAY BELOW
-		var todosArry = todoService.getTodos()
+		todosArray = todoService.getTodos(form.todo.value)
+		todosArray.push(form.todo.value);
 
-
-
-
+		todoService.saveTodos(todosArray);
 		// FINAL ACTION OF ADDING A TODO
-		todoService.saveTodos(todosArry)
+
+		drawTodos(todosArray)
 	}
 
+	function drawTodos(data) {
+		var elem = document.getElementById("todoList");
+		var template = "";
+		var itemTemplate = "";
+		//	debugger
+		for(var i = 0; i < data.length; i++) {
+			var item = data[i];
+				template += `
+					<div class="checkbox">
+    					<label>
+      						<input type="checkbox" id="check"> ${item}
+    					</label>
+  					</div>
+				`
+		}
+
+		if(data.length > 0) {
+			var items = data.length;
+			itemTemplate = `
+			<h5>Items: ${items}</h5>`
+		}
+
+		// if(document.getElementById("check")) {
+		// $("#check").on("click", function() {
+  		// 	$(".checkbox input:checked").remove();
+			
+		// });
+		// }
+		// function uncheck() {
+    	// 	document.getElementById("check").checked = false;
+		// }
+
+		return elem.innerHTML = template + itemTemplate;
+	}
 }
