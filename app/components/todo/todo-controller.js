@@ -3,7 +3,6 @@ function TodoController() {
 	// There are two methods getTodos returns and array
 	// saveTodos accepts an array and stores it to your local storage
 	var todoService = new TodoService()
-	var currentItem = "";
 
 	this.addTodoFromForm = function (e) {
 		//	debugger
@@ -30,7 +29,7 @@ function TodoController() {
 		for (var i = 0; i < data.length; i++) {
 			var item = data[i];
 			template += `
-					${item} <button type="button" onclick="app.controllers.todoController.uncheck('${item}')">X</button><br>
+					<p class="item">${item} <button type="button" onclick="app.controllers.todoController.uncheck('${item}')">X</button></p>
 				`
 		}
 
@@ -51,6 +50,7 @@ function TodoController() {
 				todosArray.splice(todo, 1);
 			}
 		}
+		todoService.saveTodos(todosArray);
 		drawTodos(todosArray);
 	}
 }

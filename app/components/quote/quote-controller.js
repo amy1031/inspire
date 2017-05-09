@@ -13,6 +13,7 @@ function QuoteController(){
 		template = `
 			<div class="col-xs-8 col-xs-offset-2 col-md-8 col-md-offset-2 text-center">
 			<h3>${data.quote}</h3>
+			<p class="author">- ${data.author}</p>
 			</div>
 			`
 		return elem.innerHTML = template;

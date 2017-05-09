@@ -26,6 +26,6 @@ function ClockController(){
     clockDiv.innerHTML = hours + ":" + minutes + ampm;
     }
 
-    displayTime();
+    setInterval(displayTime, 1000);
 
 }

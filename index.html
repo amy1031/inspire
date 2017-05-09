@@ -14,10 +14,6 @@
 <body>
 	<div class="container-fluid">
 		<div class="row">
-			<div id="weather">
-			</div>
-		</div>
-		<div class="row">
 			<div class="col-xs-2">
 				<div class="panel panel-default">
 					<div class="panel-heading">
@@ -25,11 +21,15 @@
 					</div>
 					<div class="panel-body">
 						<form onsubmit="app.controllers.todoController.addTodoFromForm(event)">
-							<input type="text" name="todo" id="todo" placeholder="Add an Item" />
+							<input type="text" name="todo" id="todo" placeholder="Add an Item" required/>
 						</form>
 						<div id="todoList">
 						</div>
 					</div>
+				</div>
+			</div>
+			<div class="col-xs-2 col-xs-offset-8 text-right">
+				<div id="weather">
 				</div>
 			</div>
 		</div>
